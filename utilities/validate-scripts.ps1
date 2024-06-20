@@ -16,7 +16,8 @@ function Validate-Syntax {
         return $false
     }
 }
-
+# Using Invoke-Expression to dynamically execute a command
+# Ensure that the input is sanitized and from a trusted source
 function Check-RestrictedCmdlets {
     param (
         [string]$script
