@@ -1,6 +1,8 @@
 #Script to convert excel to csv
- $hrFilePath = "\\share\filepath"
 
+#HR file path
+ $hrFilePath = "\\share\filepath"
+#Checking if csv in place, if not, it will convert excel
 if (!(Test-Path -Path "$hrFilePath\$today.csv")){
     Write-host("Converting excel file to csv... ") -BackgroundColor Blue
     $hrExport = Import-Excel -Path "$hrFilePath\$today.xlsx" -StartRow 7
