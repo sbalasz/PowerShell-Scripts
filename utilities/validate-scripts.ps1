@@ -1,3 +1,4 @@
+#Validate script
 param (
     [string]$scriptsPath = "."
 )
