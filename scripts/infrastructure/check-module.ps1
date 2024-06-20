@@ -1,4 +1,4 @@
-#Script to check Exel module existence
+#Script to check Exel module existence on device
  $module_name = 'importExcel'
 if(-not (Get-Module $module_name -ListAvailable)){
 Install-Module $module_name -Scope CurrentUser -Force
