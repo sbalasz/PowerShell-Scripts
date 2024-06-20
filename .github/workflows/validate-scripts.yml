@@ -1,1 +1,16 @@
+name: Validate PowerShell Scripts
+
+on: [push, pull_request]
+
+jobs:
+  validate:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Run Validation Script
+      run: .\utilities\validate-scripts.ps1
+      shell: pwsh
 
