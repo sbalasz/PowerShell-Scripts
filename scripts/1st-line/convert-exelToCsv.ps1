@@ -1,4 +1,5 @@
-﻿$hrFilePath = "\\sbshares\CFCshares\IT\BalazsShare"
+#Script to convert excel to csv
+ $hrFilePath = "\\share\filepath"
 
 if (!(Test-Path -Path "$hrFilePath\$today.csv")){
     Write-host("Converting excel file to csv... ") -BackgroundColor Blue
