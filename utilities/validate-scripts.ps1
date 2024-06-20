@@ -11,7 +11,7 @@ function Validate-Syntax {
         Write-Host "Syntax check passed for $script" -ForegroundColor Green
         return $true
     } catch {
-        Write-Host "Syntax check failed for $script: ${_}" -ForegroundColor Red
+        Write-Host "Syntax check failed for $script`: $_" -ForegroundColor Red
         return $false
     }
 }
