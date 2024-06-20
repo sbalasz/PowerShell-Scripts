@@ -1,4 +1,5 @@
-﻿$module_name = 'importExcel'
+#Script to check Exel module existence
+ $module_name = 'importExcel'
 if(-not (Get-Module $module_name -ListAvailable)){
 Install-Module $module_name -Scope CurrentUser -Force
 }
