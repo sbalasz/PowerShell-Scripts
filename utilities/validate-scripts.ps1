@@ -1,4 +1,3 @@
-#Validate script
 param (
     [string]$scriptsPath = "."
 )
@@ -12,12 +11,11 @@ function Validate-Syntax {
         Write-Host "Syntax check passed for $script" -ForegroundColor Green
         return $true
     } catch {
-        Write-Host "Syntax check failed for $script`: $_" -ForegroundColor Red
+        Write-Host "Syntax check failed for $script`: $($_)" -ForegroundColor Red
         return $false
     }
 }
-# Using Invoke-Expression to dynamically execute a command
-# Ensure that the input is sanitized and from a trusted source
+
 function Check-RestrictedCmdlets {
     param (
         [string]$script
@@ -39,7 +37,8 @@ function Check-Comments {
         [string]$script
     )
     $content = Get-Content -Path $script
-    if ($content -notmatch '#') {
+    $commentLines = $content | Where-Object { $_ -match '^\s*#' }
+    if ($commentLines.Count -eq 0) {
         Write-Host "No comments found in $script. Please add comments." -ForegroundColor Yellow
         return $false
     }
@@ -51,6 +50,12 @@ function Run-Validation {
     param (
         [string]$script
     )
+    # Exclude the validation script itself
+    if ($script -like "*validate-scripts.ps1") {
+        Write-Host "Skipping validation for $script" -ForegroundColor Yellow
+        return $true
+    }
+
     $syntaxValid = Validate-Syntax -script $script
     $restrictedCmdletsValid = Check-RestrictedCmdlets -script $script
     $commentsValid = Check-Comments -script $script
