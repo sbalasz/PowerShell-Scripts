@@ -1,4 +1,4 @@
-# This script converts Excel files to CSV format
+    # This script converts Excel files to CSV format
 param (
 # Path to the Excel file
     [string]$excelFilePath,
